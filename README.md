@@ -69,18 +69,18 @@ streamlit run app.py
 
 2. Workflow:
 
-  Upload: Drag and drop your messy CSV or Excel file.
-  Plan: Click "Analyze & Plan Strategy". The Manager Agent will inspect your data and list the necessary cleaning steps.
-  Execute: Click "Execute". Watch as the Worker Agent picks up each task, writes the code, and applies it to your data in real-time.
-  Download: Once finished, download your perfectly cleaned dataset.
+  * Upload: Drag and drop your messy CSV or Excel file.
+  * Plan: Click "Analyze & Plan Strategy". The Manager Agent will inspect your data and list the necessary cleaning steps.
+  * Execute: Click "Execute". Watch as the Worker Agent picks up each task, writes the code, and applies it to your data in real-time.
+  * Download: Once finished, download your perfectly cleaned dataset.
 
 ## How It Works (The Architecture)
 
-  Ingestion: The app loads your file into a Pandas DataFrame.
-  The Manager: We feed the dataframe schema (column names, types, non-null counts) to the Manager Agent. It returns a structured JSON plan (e.g., 1. Drop nulls in 'Age', 2. Standardize 'Date' column).
-  The Loop: The app iterates through this plan.
-  The Worker: For each step, the Worker Agent receives the current state of the dataframe and the instruction. It generates Python code.
-  Execution & Self-Correction: The code is executed. If a Python error occurs, the system captures the traceback, feeds it back to the Worker, and requests a fix immediately.
+  * Ingestion: The app loads your file into a Pandas DataFrame.
+  * The Manager: We feed the dataframe schema (column names, types, non-null counts) to the Manager Agent. It returns a structured JSON plan (e.g., 1. Drop nulls in 'Age', 2. Standardize 'Date' column).
+  * The Loop: The app iterates through this plan.
+  * The Worker: For each step, the Worker Agent receives the current state of the dataframe and the instruction. It generates Python code.
+  * Execution & Self-Correction: The code is executed. If a Python error occurs, the system captures the traceback, feeds it back to the Worker, and requests a fix immediately.
 
 ## Future Roadmap
 
