@@ -30,33 +30,42 @@ ai_data_cleaner/
 ├── requirements.txt         # Python Dependencies
 ├── .env                     # API Keys configuration
 └── README.md                # Documentation
+```
 
-Installation & Setup
+## Installation & Setup
 1. Clone the Repository
 
-``` git clone [https://github.com/yourusername/ai-data-cleaning-swarm.git](https://github.com/yourusername/ai-data-cleaning-swarm.git)
-cd ai-data-cleaning-swarm```
+```
+git clone [https://github.com/yourusername/ai-data-cleaning-swarm.git](https://github.com/yourusername/ai-data-cleaning-swarm.git)
+cd ai-data-cleaning-swarm
+```
 
 2. Create a Virtual Environment
 
-``` python -m venv venv
+```
+python -m venv venv
 # On Windows
 venv\Scripts\activate
 # On Mac/Linux
-source venv/bin/activate```
+source venv/bin/activate
+```
 
 3. Install Dependencies
 
-``` pip install -r requirements.txt ```
+``` 
+pip install -r requirements.txt
+```
 
 4. Configuration
 You will need a Groq API Key. Enter it in the Streamlit Sidebar when running the app:
 
-Usage
+## Usage
 
 1. Run the Application:
 
-``` streamlit run app.py ```
+``` 
+streamlit run app.py
+```
 
 2. Workflow:
 
@@ -65,7 +74,7 @@ Usage
   Execute: Click "Execute". Watch as the Worker Agent picks up each task, writes the code, and applies it to your data in real-time.
   Download: Once finished, download your perfectly cleaned dataset.
 
-How It Works (The Architecture)
+## How It Works (The Architecture)
 
   Ingestion: The app loads your file into a Pandas DataFrame.
   The Manager: We feed the dataframe schema (column names, types, non-null counts) to the Manager Agent. It returns a structured JSON plan (e.g., 1. Drop nulls in 'Age', 2. Standardize 'Date' column).
@@ -73,7 +82,7 @@ How It Works (The Architecture)
   The Worker: For each step, the Worker Agent receives the current state of the dataframe and the instruction. It generates Python code.
   Execution & Self-Correction: The code is executed. If a Python error occurs, the system captures the traceback, feeds it back to the Worker, and requests a fix immediately.
 
-Future Roadmap
+## Future Roadmap
 
   Guardrails Integration: Implementing strict output validation to prevent hallucinations.
   LangGraph Orchestration: Moving to a graph-based state machine for more complex non-linear workflows.
